@@ -1,4 +1,4 @@
-imgDir = fullfile("D:\Work 2\SEM 8\Computer Vision\Assignment\Semantic-Segmentation\week2");
+imgDir = fullfile(" dataset directory ");
 imds = imageDatastore(imgDir);
 
 I = readimage(imds,1);
@@ -19,7 +19,7 @@ classes = [
 
 
 labelIDs = chilliPixelLabelIDs();
-labelDir = fullfile("D:\Work 2\SEM 8\Computer Vision\Assignment\Semantic-Segmentation\LabelledChilliFarm");
+labelDir = fullfile(" labelled dataset directory ");
 pxds = pixelLabelDatastore(labelDir,classes,labelIDs);
 
 C = readimage(pxds,1);
@@ -89,7 +89,7 @@ doTraining = false;
 if doTraining    
     [net, info] = trainNetwork(dsTrain,lgraph,options);
 else
-    pretrainedNetwork = fullfile("D:\Work 2\SEM 8\Computer Vision\Assignment\Semantic-Segmentation\chillinet1.mat");  
+    pretrainedNetwork = fullfile("chillinet1.mat");  
     data = load(pretrainedNetwork);
     net = data.net;
 end
